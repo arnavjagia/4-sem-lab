@@ -31,3 +31,21 @@ def postorderTraversal(root):
         postorderTraversal(root.lchild)  
         postorderTraversal(root.rchild)
         print(root.val, end = " ")  
+        
+root = Node(25)
+for val in [4,10,12,15,18,22,24,31,35,44,50,66,70,90]:
+    insert(root, val)
+inorderTraversal(root)
+print("\n")
+preorderTraversal(root)
+print("\n")
+postorderTraversal(root)
+print("\n")
+
+"""
+4 10 12 15 18 22 24 25 31 35 44 50 66 70 90 
+
+25 4 10 12 15 18 22 24 31 35 44 50 66 70 90 
+
+24 22 18 15 12 10 4 90 70 66 50 44 35 31 25 
+"""
