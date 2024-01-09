@@ -57,8 +57,8 @@ void postorder(nodeptr root)
 {
     if (root)
     {
-        preorder(root->lchild);
-        preorder(root->rchild);
+        postorder(root->lchild);
+        postorder(root->rchild);
         printf("%d ", root->val);
     }
 }
@@ -67,15 +67,15 @@ void inorder(nodeptr root)
 {
     if (root)
     {
-        preorder(root->lchild);
+        inorder(root->lchild);
         printf("%d ", root->val);
-        preorder(root->rchild);
+        inorder(root->rchild);
     }
 }
 
 int main() {
     nodeptr root = NULL;
-    for (int i=0; i<10; i++)
+    for (int i=1; i<11; i++)
         root = createBST(root, i);
     printf("\nPreorder\n");
     preorder(root);
