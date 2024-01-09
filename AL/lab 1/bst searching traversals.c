@@ -28,11 +28,11 @@ nodeptr createBST(nodeptr root, int item)
         nodeptr root = createNode(item);
         return root;
     }
-    else if (item < root->data)
+    else if (item < root->val)
     {
         root->lchild = createBST(root->lchild, item);
     }
-    else if (item > root->data)
+    else if (item > root->val)
     {
         root->rchild = createBST(root->rchild, item);
     }
@@ -43,7 +43,9 @@ nodeptr createBST(nodeptr root, int item)
     return root;
 }
 
-
+int main() {
+    return 0;
+}
 
 
 
