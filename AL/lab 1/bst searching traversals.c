@@ -13,10 +13,9 @@ typedef struct nd {
     nodeptr lchild, rchild;
 } node;
 
-nodeptr createNode(int val)
+nodeptr createNode()
 {
     nodeptr node = malloc(sizeof(node));
-    node->val = val;
     node->lchild = node->rchild = NULL;
     return node;
 }
@@ -25,7 +24,8 @@ nodeptr createBST(nodeptr root, int item)
 {
     if (!root)
     {
-        nodeptr root = createNode(item);
+        nodeptr root = createNode();
+        root->val = item;
         return root;
     }
     else if (item < root->val)
@@ -38,12 +38,51 @@ nodeptr createBST(nodeptr root, int item)
     }
     else
     {
-        printf("No dupliucates allowed");
+        printf("No duplicates allowed");
     }
     return root;
 }
 
+void preorder(nodeptr root)
+{
+    if (root)
+    {
+        printf("%d ", root->val);
+        preorder(root->lchild);
+        preorder(root->rchild);
+    }
+}
+
+void postorder(nodeptr root)
+{
+    if (root)
+    {
+        preorder(root->lchild);
+        preorder(root->rchild);
+        printf("%d ", root->val);
+    }
+}
+
+void inorder(nodeptr root)
+{
+    if (root)
+    {
+        preorder(root->lchild);
+        printf("%d ", root->val);
+        preorder(root->rchild);
+    }
+}
+
 int main() {
+    nodeptr root = NULL;
+    for (int i=0; i<10; i++)
+        root = createBST(root, i);
+    printf("\nPreorder\n");
+    preorder(root);
+    printf("\nPostorder\n");
+    postorder(root);
+    printf("\nInorder\n");
+    inorder(root);
     return 0;
 }
 
