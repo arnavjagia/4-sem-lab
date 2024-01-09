@@ -1,7 +1,9 @@
 # Semester 4 Labs
 Contains solves for all labs in sem 4. Updated weekly.
 
-## Artificial Intelligence Lab
+## Algorithms Lab ([manual](AL/Algorithms%20Lab%20Manual-CSE2242-2023-24-Rev-Final.pdf))
+
+## Artificial Intelligence Lab ([manual](AIL/AI%20lab%20manual%20Updated.pdf))
 ### Lab 1
 4. [Binary Search Tree and its Traversals](AIL/lab%201/bst%20and%20traversals.py)
 
