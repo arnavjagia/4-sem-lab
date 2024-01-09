@@ -43,6 +43,21 @@ nodeptr createBST(nodeptr root, int item)
     return root;
 }
 
+void searchBST(nodeptr root, int key)
+{
+    if (!root)
+    {
+        root = createBST(root, key);
+    } else if (root->val == key) {
+        printf("Key found\n");
+        return;
+    } else if (key < root->val) {
+        searchBST(root->lchild, key);
+    } else if (key > root->val) {
+        searchBST(root->rchild, key);
+    }
+}
+
 void preorder(nodeptr root)
 {
     if (root)
@@ -83,39 +98,10 @@ int main() {
     postorder(root);
     printf("\nInorder\n");
     inorder(root);
+
+    printf("\nSearching for 10\n");
+    searchBST(root, 12);
+
+    inorder(root);
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// nodeptr createBST(nodeptr root)
-// {
-//     // taking val
-//     printf("Enter value: ");
-//     int inp;
-//     scanf("%d", &inp);
-//     nodeptr newnode = createNode(inp);
-
-//     // terminating input
-//     if (inp == -1) {
-//         return root;
-//     } else {
-//         if (inp == root->val) {
-//             printf("Duplicates not allowed");
-//         } else if (inp < root->val) {
-//             root->lchild = createBST(root->lchild);
-//         } else if (inp > root->val) {
-//             root->rchild = createBST(root->rchild);
-//         } 
-//     }
-// }
