@@ -20,4 +20,12 @@ copy and paste the output
   /* multi line comment */
   ```
 
+- [Display names of all constraints for a table in Oracle SQL](https://stackoverflow.com/questions/11879217/display-names-of-all-constraints-for-a-table-in-oracle-sql#:~:text=SELECT%20*%0A%20%20FROM%20user_constraints%0A%20WHERE%20table_name%20%3D%20%27%3Cyour%20table%20name%3E%27%0A%20%20%20AND%20constraint_name%20%3D%20%27%3Cyour%20constraint%20name%3E%27%3B)
+  ```sql
+  SELECT *
+    FROM user_constraints
+   WHERE table_name = '<your table name>'
+     AND constraint_name = '<your constraint name>';
+  ```
+
 - 
