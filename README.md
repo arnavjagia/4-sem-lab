@@ -14,3 +14,5 @@ Contains solves for all labs in sem 4. Updated weekly.
 1. [Directed unweighted graph](AIL/lab%202/DirectedUnweightedGraph.py)
 2. [Directed weighted graph](AIL/lab%202/DirectedWeightedGraph.py)
 3. [Undirected weighted graph](AIL/lab%202/UndirectedUnweightedGraph.py)
+
+## Database Lab ([manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf))
