@@ -44,3 +44,12 @@ INSERT INTO department VALUES(901, 'CSE', 'MANIPAL');
 INSERT INTO department VALUES(902, 'ICT', 'MANIPAL');
 INSERT INTO employee VALUES(101, 'firstperson', 'M', 1000, 'MANIPAL', 901);
 INSERT INTO employee VALUES(102, 'secondperson', 'F', 2000, 'MANIPAL', 902);
+
+/* 5.
+Try to insert few tuples into Employee and Department which violates some of the above constraints
+*/
+-- ORA-00001: unique constraint (CSE50.SYS_C00146313) violated
+INSERT INTO department VALUES(901, 'DSE','MANIPAL');
+-- ORA-02290: check constraint (CSE50.SYS_C00146310) violated
+INSERT INTO employee VALUES(103, 'thirdperson', 'G', 3000, 'MANIPAL', 901);
+
