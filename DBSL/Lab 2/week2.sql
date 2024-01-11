@@ -36,3 +36,11 @@ ADD CONSTRAINT dno_fk
 	FOREIGN KEY (dno)
 	REFERENCES department(deptno)
 	ON DELETE CASCADE;
+
+/* 4.
+Insert few tuples into Employee and Department which satisfies the above constraints.
+*/
+INSERT INTO department VALUES(901, 'CSE', 'MANIPAL');
+INSERT INTO department VALUES(902, 'ICT', 'MANIPAL');
+INSERT INTO employee VALUES(101, 'firstperson', 'M', 1000, 'MANIPAL', 901);
+INSERT INTO employee VALUES(102, 'secondperson', 'F', 2000, 'MANIPAL', 902);
