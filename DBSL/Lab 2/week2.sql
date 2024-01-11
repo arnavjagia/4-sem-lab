@@ -34,8 +34,7 @@ Make DNo of Employee as foreign key which refers to DeptNo of Department.
 ALTER TABLE employee
 ADD CONSTRAINT dno_fk
 	FOREIGN KEY (dno)
-	REFERENCES department(deptno)
-	ON DELETE CASCADE;
+	REFERENCES department(deptno);
 
 /* 4.
 Insert few tuples into Employee and Department which satisfies the above constraints.
@@ -58,5 +57,15 @@ Try to modify/delete a tuple which violates a constraint.
 (Ex: Drop a department tuple which has one or more employees)
 */
 UPDATE department SET deptno = 903 WHERE deptname = 'CSE';
--- DELETE FROM department WHERE deptname = 'CSE';		-- doesn't violate
+DELETE FROM department WHERE deptno = 901;
 
+/* 7.
+Modify the foreign key constraint of Employee table such that whenever a department 
+tuple is deleted, the employees belonging to that department will also be deleted
+*/
+ALTER TABLE employee DROP CONSTRAINT dno_fk;
+ALTER TABLE employee
+ADD CONSTRAINT dno_fk
+	FOREIGN KEY (dno)
+	REFERENCES department(deptno)
+	ON DELETE CASCADE;
