@@ -13,3 +13,15 @@ CREATE TABLE employee
 	 PRIMARY KEY (enum),
 	 CHECK (gender in ('M', 'F'))
 	);
+
+/* 2.
+Create Department table with following:
+- Make DeptNo as Primary key
+- Make DeptName as candidate key
+*/
+CREATE TABLE department
+	(deptno		number(3),
+	 deptname	varchar(15)	NOT NULL,
+	 PRIMARY KEY (deptno),
+	 UNIQUE (deptname)
+	);
