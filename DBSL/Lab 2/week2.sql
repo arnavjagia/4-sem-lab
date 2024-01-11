@@ -53,3 +53,10 @@ INSERT INTO department VALUES(901, 'DSE','MANIPAL');
 -- ORA-02290: check constraint (CSE50.SYS_C00146310) violated
 INSERT INTO employee VALUES(103, 'thirdperson', 'G', 3000, 'MANIPAL', 901);
 
+/* 6.
+Try to modify/delete a tuple which violates a constraint.
+(Ex: Drop a department tuple which has one or more employees)
+*/
+UPDATE department SET deptno = 903 WHERE deptname = 'CSE';
+-- DELETE FROM department WHERE deptname = 'CSE';		-- doesn't violate
+
