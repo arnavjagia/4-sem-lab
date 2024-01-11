@@ -7,9 +7,10 @@ Create Employee table with following constraints:
 CREATE TABLE employee
 	(enum		number(3),
 	 ename		varchar(15)	NOT NULL,
-	 eadd		varchar(15)	NOT NULL,
 	 gender		char(1)		NOT NULL,
 	 salary		number(9,2)	NOT NULL,
+	 eadd		varchar(15)	NOT NULL,
+	 dno		number(3),
 	 PRIMARY KEY (enum),
 	 CHECK (gender in ('M', 'F'))
 	);
@@ -22,6 +23,16 @@ Create Department table with following:
 CREATE TABLE department
 	(deptno		number(3),
 	 deptname	varchar(15)	NOT NULL,
+	 location	varchar(15),
 	 PRIMARY KEY (deptno),
 	 UNIQUE (deptname)
 	);
+
+/* 3.
+Make DNo of Employee as foreign key which refers to DeptNo of Department.
+*/
+ALTER TABLE employee
+ADD CONSTRAINT dno_fk
+	FOREIGN KEY (dno)
+	REFERENCES department(deptno)
+	ON DELETE CASCADE;
