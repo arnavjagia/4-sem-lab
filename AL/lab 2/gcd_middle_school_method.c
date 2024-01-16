@@ -56,3 +56,85 @@ int main() {
       printf("\nmiddle_school_gcd(%d, %d) = %d\n", x, y, middle_school_gcd(x, y));
       printf("n_iter = %d\n\n", iter);
 }
+
+/*
+Enter a and b: 12 18
+
+middle_school_gcd(12, 18) = 6
+n_iter = 25
+
+consecutive_integer_gcd(12, 18) = 6
+n_iter = 7
+
+Enter a and b: 45 60
+
+middle_school_gcd(45, 60) = 15
+n_iter = 141
+
+consecutive_integer_gcd(45, 60) = 15
+n_iter = 31
+
+Enter a and b: 101 103
+
+middle_school_gcd(101, 103) = 1
+n_iter = 482
+
+consecutive_integer_gcd(101, 103) = 1
+n_iter = 100
+
+Enter a and b: 56 72
+
+middle_school_gcd(56, 72) = 8
+n_iter = 191
+
+consecutive_integer_gcd(56, 72) = 8
+n_iter = 49
+
+Enter a and b: 81 27
+
+middle_school_gcd(81, 27) = 27
+n_iter = 71
+
+consecutive_integer_gcd(81, 27) = 27
+n_iter = 1
+
+Enter a and b: 35 49
+
+middle_school_gcd(35, 49) = 7
+n_iter = 101
+
+consecutive_integer_gcd(35, 49) = 7
+n_iter = 29
+
+Enter a and b: 24 36
+
+middle_school_gcd(24, 36) = 12
+n_iter = 63
+
+consecutive_integer_gcd(24, 36) = 12
+n_iter = 13
+
+Enter a and b: 66 99
+
+middle_school_gcd(66, 99) = 33
+n_iter = 236
+
+consecutive_integer_gcd(66, 99) = 33
+n_iter = 34
+
+Enter a and b: 100 200
+
+middle_school_gcd(100, 200) = 100
+n_iter = 388
+
+consecutive_integer_gcd(100, 200) = 100
+n_iter = 1
+
+Enter a and b: 88 176
+
+middle_school_gcd(88, 176) = 88
+n_iter = 335
+
+consecutive_integer_gcd(88, 176) = 88
+n_iter = 1
+*/
