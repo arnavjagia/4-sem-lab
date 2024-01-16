@@ -6,6 +6,10 @@ Contains solves for all labs in sem 4. Updated weekly.
 1. [Binary Search Tree - Searching and its Traversals](AL/lab%201/bst%20searching%20traversals.c)
 2. [Graphs - adjacency list and matrix](AL/lab%201/graph%20list%20matrix.c)
 
+### Lab 2
+1. [GCD - consecutive integer method](AL/lab%202/gcd_consecutive_integers.c)
+2. [GCD - middle school method](AL/lab%202/gcd_middle_school_method.c)
+
 ## Artificial Intelligence Lab - [manual](AIL/AI%20lab%20manual%20Updated.pdf) | [reference](AIL/README.md)
 ### Lab 1
 4. [Binary Search Tree and its Traversals](AIL/lab%201/bst%20and%20traversals.py)
