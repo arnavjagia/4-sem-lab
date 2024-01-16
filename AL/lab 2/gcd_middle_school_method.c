@@ -1,0 +1,3 @@
+/*
+Write a program to find GCD using middle school method and analyze its time efficiency.
+*/
