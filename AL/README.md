@@ -1,5 +1,5 @@
 - [prime factors efficient way](https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/)
-  ```py
+```py
 #Python program to print prime factors
 import math
 # A function to print all prime factors of 
@@ -24,4 +24,4 @@ def primeFactors(n):
 n = 315
 primeFactors(n)
 # This code is contributed by Harshit Agrawal
-  ```
+```
