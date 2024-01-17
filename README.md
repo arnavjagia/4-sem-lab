@@ -1,7 +1,7 @@
 # Semester 4 Labs
 Contains solves for all labs in sem 4. Updated weekly.
 
-## Algorithms Lab - [manual](AL/Algorithms%20Lab%20Manual-CSE2242-2023-24-Rev-Final.pdf)
+## Algorithms Lab - [manual](AL/Algorithms%20Lab%20Manual-CSE2242-2023-24-Rev-Final.pdf) | [reference](AL/README.md)
 ### Lab 1
 1. [Binary Search Tree - Searching and its Traversals](AL/lab%201/bst%20searching%20traversals.c)
 2. [Graphs - adjacency list and matrix](AL/lab%201/graph%20list%20matrix.c)
