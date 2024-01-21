@@ -13,7 +13,7 @@ class Graph:
                 print(f'({start} -> {end})', end=' ')
             print()
 
-    def topological_sort(start: int, visited: list[int], sort: list[int], vertices: list[int]) -> list[int]:
+    def topological_sort(self, start: int, visited: list[int], sort: list[int], vertices: list[int]) -> list[int]:
         """Perform topological sort on a directed acyclic graph."""
         current = start
         # add current to visited
@@ -22,14 +22,14 @@ class Graph:
         for neighbor in neighbors:
             # if neighbor not in visited, visit
             if neighbor not in visited:
-                sort = topological_sort(neighbor, visited, sort, vertices)
+                sort = self.topological_sort(neighbor, visited, sort, vertices)
         # if all neighbors visited add current to sort
         sort.append(current)
         # if all vertices haven't been visited select a new one to visit
         if len(visited) != len(vertices):
             for vertice in vertices:
                 if vertice not in visited:
-                    sort = topological_sort(vertice, visited, sort, vertices)
+                    sort = self.topological_sort(vertice, visited, sort, vertices)
         # return sort
         return sort
 
@@ -39,6 +39,7 @@ if __name__ == '__main__':
     edges = [(5,0),(4,0),(5,2),(2,3),(3,1),(4,1)]
     for edge in edges:
         g.insert(edge[0], edge[1])
+
     vertices = list(g.adjlist.keys())
-    sort = topological_sort(3, [], [], vertices)
+    sort = g.topological_sort(4, [], [], vertices)
     print(sort)
