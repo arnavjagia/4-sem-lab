@@ -21,7 +21,7 @@ class Deque:
 
 class Graph:
     def __init__(self):
-        adj = {}
+        self.adj = {}
 
     def __str__(self):
         res = ""
