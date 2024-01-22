@@ -43,7 +43,7 @@ class Graph:
         indegree = {vertex : 0 for vertex in self.adj}
 
         # maintaining indegree dict
-        for tail, headlist in self.adj:
+        for tail, headlist in self.adj.items():
             for head in headlist:
                 indegree[head] += 1
 
