@@ -7,10 +7,13 @@ aditya mohan - 3 labs miss
 class Dequeue:
     def __init__(self):
         self.arr = []
+        
     def enqueue(self, ele):
         self.arr.append(ele)
+        
     def dequeue(self):
         return self.arr.pop(0)
+        
     def __str__(self):
         res = "Queue: "
         for ele in self.arr:
@@ -25,8 +28,10 @@ class Graph:
                 res += f"({tail} -> {head})\t"
             res += "\n"
         return res
+        
     def __init__(self):
         self.adj = {}
+        
     def add_edge(self, tail, head):
         if tail not in self.adj:
             self.adj[tail] = []
