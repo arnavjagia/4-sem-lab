@@ -36,10 +36,13 @@ class Graph:
             self.adj[tail] = []
         self.adj[tail].append(head)
 
+        if head not in self.adj:
+            self.adj[head] = []
+
     def topo_sort_bfs(self) -> list:
         T = []
         d = Deque()
-        visited = [0 for vertex in self.adj]
+        visited = {vertex : 0 for vertex in self.adj}
         indegree = {vertex : 0 for vertex in self.adj}
 
         # maintaining indegree dict
@@ -54,7 +57,7 @@ class Graph:
                 visited[vertex] = True
 
         # applying bfs
-        while d:
+        while len(d.arr):
             vertex = d.dequeue()
             T.append(vertex)
             for head in self.adj[vertex]:
