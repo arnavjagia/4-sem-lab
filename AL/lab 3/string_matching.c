@@ -32,6 +32,7 @@ int main()
     char substr[] = "World";
 
     string_match(str, substr);
+    printf("\n%d\n", opcount);
     
     return 0;
 }
