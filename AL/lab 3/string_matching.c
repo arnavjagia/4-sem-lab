@@ -16,27 +16,29 @@ int string_match(char *str, char *substr)
     if (len2>len1) { return -1; }
 
     for (int i=0; i<len1; ++i)
-        // first character matches in string
-        if (substr[0] == str[i])
-            for (int j=1; j<len2; ++j)
-            {
-                ++opcount;
-                if (substr[j] != str[i+j]) break;
-                if (j+1 == len2) return i;
-            }
+        for (int j=0; j<len2; ++j)
+        {
+            ++opcount;
+            if (substr[j] != str[i+j]) break;
+            if (j+1 == len2) return i;
+        }
     return -1;
 }
 
 int main()
 {
-    char str[] = " ";
+    char str[] = "skibididopWorlddopdop";
     char substr[] = "World";
 
     string_match(str, substr);
+    printf("\n%ld\n", strlen(str)*strlen(substr));
     printf("\n%d\n", opcount);
     
     return 0;
 }
 /*
 
+105
+
+15
 */
