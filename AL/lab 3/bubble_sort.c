@@ -6,12 +6,16 @@ the best and worst case.
 
 #include <stdio.h>
 
+void swap (int *a, int *b)
+{
+    int t = *a; *a = *b; *b = t;
+}
+
 void bubble_sort(int *arr, unsigned int len)
 {
-    for (int i=0; i<n-1; i++)
-    {
-        printf("\n%d", arr[i]);
-    }
+    for (int i=0; i<len-1; i++)
+        if (arr[i+1]<arr[i])
+            swap(&arr[i+1], &arr[i]);
 }
 
 int main() 
