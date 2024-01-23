@@ -3,6 +3,7 @@ Write a program to implement brute-force string matching. Analyze its time effic
 */
 
 #include <stdio.h>
+#include <string.h>
 
 // global opcount counter
 int opcount = 0;
