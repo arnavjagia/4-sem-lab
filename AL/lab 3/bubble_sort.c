@@ -14,8 +14,9 @@ void swap (int *a, int *b)
 void bubble_sort(int *arr, unsigned int len)
 {
     for (int i=0; i<len-1; i++)
-        if (arr[i+1]<arr[i])
-            swap(&arr[i+1], &arr[i]);
+        for (int j=i; j<len-1; j++)
+            if (arr[j+1]<arr[j])
+                swap(&arr[j+1], &arr[j]);
 }
 
 int main() 
