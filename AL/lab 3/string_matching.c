@@ -8,8 +8,8 @@ int main()
 {
     char str1[] = "Hellooo";
     char str2[] = "World";
-    printf("\n%d", sizeof(str1));
-    printf("\n%d", sizeof(str2));
+    printf("\n%ld", sizeof(str1));
+    printf("\n%ld", sizeof(str2));
     
     return 0;
 }
