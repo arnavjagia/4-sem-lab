@@ -18,9 +18,11 @@ void bubble_sort(int *arr, unsigned int len)
 {
     for (int i=0; i<len-1; i++)
         for (int j=0; j<len-i-1; j++)
+        {
             opcount++;
             if (arr[j+1]<arr[j])
                 swap(&arr[j+1], &arr[j]);
+        }
 }
 
 int main() 
