@@ -27,15 +27,15 @@ void bubble_sort(int *arr, unsigned int len)
 
 int main() 
 {
-    int setofintegers[5][] = {56,87,34,79,23,94,12,109,34};
+    int arr[] = {56,87,34,79,23,94,12,109,34};
 
-    unsigned int len = sizeof(setofintegers)/sizeof(setofintegers[0]);
+    unsigned int len = sizeof(arr)/sizeof(arr[0]);
     
-    bubble_sort(setofintegers, len);
+    bubble_sort(arr, len);
     
     for (int i=0; i<len; i++)
-        printf("%d ", setofintegers[i]);
-    printf("\nlen: %d\nopcount: %d", len, opcount);
+        printf("%d ", arr[i]);
+    printf("\nlen: %d\nopcount: %d\n", len, opcount);
     
     return 0;
 }
