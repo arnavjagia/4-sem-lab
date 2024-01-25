@@ -86,7 +86,7 @@ CREATE TABLE employee
 	 CHECK (gender in ('M', 'F'))
 	);
 INSERT INTO employee (enum, dob) values (101, '25012024');
-INSERT INTO employee (enum, dob) values (102, '05122004');
+INSERT INTO employee (enum, dob) values (102, '26012024');
 
 select enum, dob,
 	to_char(to_date(dob, 'DDMMYYYY'), 'DD-MON-YYYY'),
