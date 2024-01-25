@@ -88,7 +88,11 @@ CREATE TABLE employee
 INSERT INTO employee (enum, dob) values (101, '25012024');
 INSERT INTO employee (enum, dob) values (102, '05122004');
 
-select enum, dob, to_char(to_date(dob, 'DDMMYYYY'), 'DD-MON-YYYY'), to_char(to_date(dob, 'DDMMYYYY'), 'DD-MON-YY'), to_char(to_date(dob, 'DDMMYYYY'), 'DD-MM-YY') from employee;
+select enum, dob, to_char(to_date(dob, 'DDMMYYYY'),
+	'DD-MON-YYYY'), to_char(to_date(dob, 'DDMMYYYY'),
+	'DD-MON-YY'), to_char(to_date(dob, 'DDMMYYYY'),
+	'DD-MM-YY') 
+	from employee;
 
 /* 25
 List the employee names and the year (fully spelled out) in which they are born
@@ -96,3 +100,8 @@ List the employee names and the year (fully spelled out) in which they are born
  ‘Year’
  ‘year’
 */
+select enum, dob,
+	to_char(to_date(dob, 'DDMMYYYY'), 'YEAR'),
+	to_char(to_date(dob, 'DDMMYYYY'), 'Year')
+	to_char(to_date(dob, 'DDMMYYYY'), 'year') 
+	from employee;
