@@ -1,14 +1,27 @@
--- problem 9
+/* 9
+List all Students with names and their department names.
+*/
 select name, dept_name from student;
--- problem 10
+/* 10 
+List all instructors in CSE department.
+*/
 select * from instructor where dept_name = 'Comp. Sci.';
--- problem 11
+/* 11 
+Find the names of courses in CSE department which have 3 credits.
+*/
 select title from course where dept_name = 'Comp. Sci.' and credits = 3;
--- problem 12
+/* 12
+For the student with ID 12345 (or any other value), show all course-id and title of all 
+courses registered for by the student.
+*/
 select course_id, title from takes natural join course where id = 12345;
--- problem 13
+/* 13
+List all the instructors whose salary is in between 40000 and 90000.
+*/
 select * from instructor where salary between 40000 and 90000;
--- problem 14
+/* 14
+Display the IDs of all instructors who have never taught a course.
+*/
 select * from instructor where id not in (select id from teaches);
 /* 15
 Find the student names, course names, and the year, for all students those who have 
