@@ -38,12 +38,12 @@ Find the names of all instructors whose salary is greater than the salary of at 
 one instructor of CSE department and salary replaced by inst-salary.
 */
 select name, salary as "inst-salary"
-    from instructor
-    where salary > (
-        select min(salary)
-        from instructor
-        where dept_name = 'Comp. Sci.'
-    );
+from instructor
+where salary > (
+	select min(salary)
+	from instructor
+	where dept_name = 'Comp. Sci.'
+);
 /* 18
 Find the names of all instructors whose department name includes the substring ‘ch’
 */
@@ -92,7 +92,7 @@ select enum, dob,
 	to_char(to_date(dob, 'DDMMYYYY'), 'DD-MON-YYYY'),
 	to_char(to_date(dob, 'DDMMYYYY'), 'DD-MON-YY'),
 	to_char(to_date(dob, 'DDMMYYYY'), 'DD-MM-YY') 
-	from employee;
+from employee;
 
 /* 25
 List the employee names and the year (fully spelled out) in which they are born
@@ -104,4 +104,4 @@ select enum, dob,
 	to_char(to_date(dob, 'DDMMYYYY'), 'YEAR'),
 	to_char(to_date(dob, 'DDMMYYYY'), 'Year')
 	to_char(to_date(dob, 'DDMMYYYY'), 'year') 
-	from employee;
+from employee;
