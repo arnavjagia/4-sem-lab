@@ -40,7 +40,7 @@ select name from student where name in (select name from instructor);
 
 -- 9.
 select name from instructor where salary > some(select salary from instructor where dept_name = 'Biology');
-Win+Alt+l
+
 -- 10.
 select name from instructor where salary > all(select salary from instructor where dept_name = 'Biology');
 
