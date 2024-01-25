@@ -81,7 +81,7 @@ CREATE TABLE employee
 	 salary		number(9,2),
 	 eadd		varchar(15),
 	 dno		number(3),
-	 dob		char(8),
+	 dob		char(20),
 	 PRIMARY KEY (enum),
 	 CHECK (gender in ('M', 'F'))
 	);
