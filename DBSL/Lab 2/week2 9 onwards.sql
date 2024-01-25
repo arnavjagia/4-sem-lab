@@ -102,6 +102,6 @@ List the employee names and the year (fully spelled out) in which they are born
 */
 select enum, dob,
 	to_char(to_date(dob, 'DDMMYYYY'), 'YEAR'),
-	to_char(to_date(dob, 'DDMMYYYY'), 'Year')
+	to_char(to_date(dob, 'DDMMYYYY'), 'Year'),
 	to_char(to_date(dob, 'DDMMYYYY'), 'year') 
 from employee;
