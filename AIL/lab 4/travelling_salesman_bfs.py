@@ -9,19 +9,34 @@ graph = {
 }
 """
 
-from collections import deque
+class Deque:
+    def __init__(self):
+        self.arr = []
+        
+    def enqueue(self, ele):
+        self.arr.append(ele)
+        
+    def dequeue(self):
+        return self.arr.pop(0)
+        
+    def __str__(self):
+        res = "Queue: "
+        for ele in self.arr:
+            res += str(ele) + " "
+        return res
 
 def bfs(graph, start):
     visited = set()
-    queue = deque([(start, [start])])
+    queue = Deque()
+    queue.enqueue((start, [start]))
 
-    while queue:
-        (node, path) = queue.popleft()
+    while queue.arr:
+        (node, path) = queue.dequeue()
         for next_node in set(graph[node]) - set(path):
             if len(path) + 1 == len(graph):
                 yield path + [next_node]
             else:
-                queue.append((next_node, path + [next_node]))
+                queue.enqueue((next_node, path + [next_node]))
 
 def tsp_bfs(graph, start):
     shortest_path = None
@@ -43,3 +58,7 @@ graph = {
     'D': {'A': 1, 'B': 2, 'C': 3}
 }
 print(tsp_bfs(graph, 'C'))
+
+"""
+(['C', 'B', 'A', 'D'], 10)
+"""
