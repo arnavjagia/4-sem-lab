@@ -54,23 +54,22 @@ class Graph:
         shortest_path_length = float('inf')
 
         for path in self.bfs(start):
-            path_length = sum(graph[path[i-1]][path[i]] for i in range(len(path)))
+            path_length = sum(self.adj[path[i-1]][path[i]] for i in range(len(path)))
             if path_length < shortest_path_length:
                 shortest_path = path
                 shortest_path_length = path_length
 
         return shortest_path, shortest_path_length
 
-# example usage:
-graph = {
-    'A': {'B': 2, 'C': 3, 'D': 1},
-    'B': {'A': 2, 'C': 4, 'D': 2},
-    'C': {'A': 3, 'B': 4, 'D': 3},
-    'D': {'A': 1, 'B': 2, 'C': 3}
-}
-g = Graph(graph)
-print(g.tsp_bfs('C'))
-
+if __name__ == "__main__":
+    graph = {
+        'A': {'B': 2, 'C': 3, 'D': 1},
+        'B': {'A': 2, 'C': 4, 'D': 2},
+        'C': {'A': 3, 'B': 4, 'D': 3},
+        'D': {'A': 1, 'B': 2, 'C': 3}
+    }
+    g = Graph(graph)
+    print(g.tsp_bfs('C'))
 
 """
 (['C', 'B', 'A', 'D'], 10)
