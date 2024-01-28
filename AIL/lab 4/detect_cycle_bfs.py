@@ -3,16 +3,6 @@ Consider the following directed graph for detecting cycles in the graph using BF
 algorithm using Python.
 """
 
-"""
-Consider the following directed graph for detecting cycles in the graph using BFS 
-algorithm using Python.
-"""
-
-"""
-Consider the following directed graph for detecting cycles in the graph using BFS 
-algorithm using Python.
-"""
-
 class Deque:
     def __init__(self):
         self.arr = []
