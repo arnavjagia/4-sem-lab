@@ -3,6 +3,16 @@ Consider the following directed graph for detecting cycles in the graph using BF
 algorithm using Python.
 """
 
+"""
+Consider the following directed graph for detecting cycles in the graph using BFS 
+algorithm using Python.
+"""
+
+"""
+Consider the following directed graph for detecting cycles in the graph using BFS 
+algorithm using Python.
+"""
+
 class Deque:
     def __init__(self):
         self.arr = []
@@ -55,12 +65,12 @@ class Graph:
                 d.enqueue(vertex)
                 visited.add(vertex)
 
-        return True if len(d.arr) == 0
+        if len(d.arr) == 0:
+            return True 
 
         # applying bfs
         while len(d.arr):
             vertex = d.dequeue()
-            # T.append(vertex)
             for head in self.adj[vertex]:
                 if head in visited:
                     return True
@@ -72,16 +82,12 @@ class Graph:
         return False
 
 if __name__ == "__main__":
-    d = Dequeue()
-    print(d)
-    d.enqueue(1)
-    print(d)
-    d.enqueue(2)
-    print(d)
     g = Graph()
-    g.add_edge(1,2)
-    g.add_edge(1,3)
-    g.add_edge(2,3)
-    print(g)
+    edges = [(0,1), (0,2), (1,2), (2,0), (2,3), (3,3)]
+    for edge in edges:
+        g.add_edge(edge[0], edge[1])
     print(g.detect_cycle())
-    print(g.visited)
+
+"""
+True
+"""
