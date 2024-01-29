@@ -43,8 +43,8 @@ class Graph:
 
         while queue.arr:
             (node, path) = queue.dequeue()
-            for next_node in set(graph[node]) - set(path):
-                if len(path) + 1 == len(graph):
+            for next_node in set(self.adj[node]) - set(path):
+                if len(path) + 1 == len(self.adj):
                     yield path + [next_node]
                 else:
                     queue.enqueue((next_node, path + [next_node]))
