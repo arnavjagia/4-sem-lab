@@ -23,3 +23,6 @@ Contains solves for all labs in sem 4. Updated weekly.
 ## Database Lab - [manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf?raw=true) | [reference](DBSL/README.md)
 ### Lab 2
 1. [Queries 1 to 8](DBSL/Lab%202/week2%20till%208.sql)
+
+### Lab 3
+1. [week3 queries](DBSL/Lab%203/week3.sql)
