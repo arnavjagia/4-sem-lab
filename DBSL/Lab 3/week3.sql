@@ -58,14 +58,26 @@ HAVING avg(salary) >= ALL (
 select dept_name from department where budget < all(select avg(salary) from instructor);
 
 -- 13.
-SELECT course_id, title FROM course WHERE EXISTS (SELECT course_id FROM section 
-WHERE semester = 'Fall'  AND year = 2009 AND course.course_id = section.course_id)
-INTERSECT
-SELECT course_id, title FROM course WHERE EXISTS (SELECT course_id FROM section 
-WHERE semester = 'Spring' AND year = 2010 AND course.course_id = section.course_id);
+select course_id
+from section as S
+where semester = 'Fall' and year= 2009 and
+        exists (select *
+                from section as T
+                where semester = 'Spring' and year= 2010 and
+                S.course_id= T.course_id);
 
 -- 14.
-select name, ID from student where exists (select t.ID from takes t, course c where t.course_id = c.course_id and c.dept_name = 'Biology' and student.ID = t.ID);
+select distinct S.ID, S.name
+from student as S
+where not exists (
+        (select course_id
+        from course
+        where dept_name = 'Biology')
+        except
+        (select T.course_id
+        from takes as T
+        where S.ID = T.ID)
+        );
 
 -- 15.
 select course_id, title form course where course_id in (select course_id from section where year = 2009 group by course_id having count(course_id) < 2);
