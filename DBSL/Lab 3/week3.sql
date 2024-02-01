@@ -82,7 +82,7 @@ where not exists (
 select course_id, title form course where course_id in (select course_id from section where year = 2009 group by course_id having count(course_id) < 2);
 
 -- 16.
-select distinct S.ID, S.name
+select S.ID, S.name
 from student S
 where 1 < (
     select count(*)
