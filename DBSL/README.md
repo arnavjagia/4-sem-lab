@@ -1,3 +1,9 @@
+- Python script to setup new SQL file
+  ```py
+  for i in range (1,17):
+       print("/* "+str(i)+"\n\n*/\n")
+  ```
+
 - [Create a new user in SQL *Plus](https://library.netapp.com/ecmdocs/ECMP12471543/html/GUID-287BC8BA-B8B6-4D67-804E-880B65D30B68.html)
 
 - [SQL command to list all tables in Oracle](https://www.sqltutorial.org/sql-list-all-tables/#:~:text=SELECT%20%0A%20%20%20%20table_name%0AFROM%0A%20%20%20%20user_tables%3B)
