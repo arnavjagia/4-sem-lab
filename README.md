@@ -20,7 +20,7 @@ Contains solves for all labs in sem 4. Updated weekly.
 3. [Undirected unweighted graph](AIL/lab%202/UndirectedUnweightedGraph.py)
 4. [Undirected weighted graph](AIL/lab%202/UndirectedWeightedGraph.py)
 
-## Database Lab - [manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf?raw=true) | [reference](DBSL/README.md)
+## Database Lab - [manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf?raw=true) | [reference](DBSL/README.md) | [book](DBSL/Silberschatz_A_databases_6th_ed.pdf?raw=true)
 ### Lab 2
 1. [Queries 1 to 8](DBSL/Lab%202/week2%20till%208.sql)
 
