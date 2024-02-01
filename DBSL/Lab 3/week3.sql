@@ -45,7 +45,14 @@ select name from instructor where salary > some(select salary from instructor wh
 select name from instructor where salary > all(select salary from instructor where dept_name = 'Biology');
 
 -- 11.
-select * from (select dept_name, avg(salary) from instructor group by dept_name order by avg(salary) desc) where rownum = 1;
+SELECT dept_name
+FROM instructor 
+GROUP BY dept_name
+HAVING avg(salary) >= ALL (
+        SELECT avg(salary)
+        FROM instructor
+        GROUP BY  dept_name
+        );
 
 -- 12.
 select dept_name from department where budget < all(select avg(salary) from instructor);
