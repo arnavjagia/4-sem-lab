@@ -30,4 +30,5 @@ copy and paste the output
      AND constraint_name = '<your constraint name>';
   ```
 
-- 
+- Never put `AS` in `FROM` clause in Oracle SQL
+- `EXCEPT` clause doesn't work, instead use `MINUS` instead
