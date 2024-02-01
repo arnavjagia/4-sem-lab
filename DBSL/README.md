@@ -34,3 +34,4 @@ copy and paste the output
 - `EXCEPT` clause doesn't work, instead use `MINUS` instead
 - use `ROLLBACK TO <savpoint name>` to go to a savepoint  
   NOTE: savepoints are created for the current session only
+- `UNIQUE` doesn't work in Oracle SQL so use `count(*)` method like in book
