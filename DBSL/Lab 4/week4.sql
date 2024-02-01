@@ -1,8 +1,3 @@
-/*
-for i in range (1,17):
-     print("/* "+str(i)+"\n\n*/\n")
-*/
-
 /* 1
 Find the number of students in each course
 */
@@ -15,7 +10,8 @@ Find those departments where the average number of students are greater than 10.
 */
 SELECT dept_name, count(*) n_students
 FROM department NATURAL JOIN student
-GROUP BY dept_name;
+GROUP BY dept_name
+HAVING count(*)>10;
 
 /* 3
 Find the total number of courses in each department.
@@ -30,11 +26,16 @@ greater than 42000.
 */
 SELECT dept_name, avg(salary)
 FROM instructor
-GROUP BY dept_name;
+GROUP BY dept_name
+HAVING avg(salary)>42000;
 
 /* 5
-
+Find the enrolment of each section that was offered in Spring 2009.
 */
+SELECT course_id, sec_id, count(*) n_enrolments
+FROM takes
+GROUP BY course_id, sec_id, semester, year
+HAVING semester = 'Spring' and year = '2009';
 
 /* 6
 
