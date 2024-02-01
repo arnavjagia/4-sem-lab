@@ -74,9 +74,19 @@ HAVING semester = 'Spring' and year = '2009';
 */
 
 /* 15
-
+Transfer all the students from CSE department to IT department.
 */
+SAVEPOINT s1;
+UPDATE student SET dept_name = 'IT' 
+WHERE dept_name = 'Comp. Sci.';
+ROLLBACK TO s1;
 
 /* 16
-
+Increase salaries of instructors whose salary is over $100,000 by 3%, and all 
+others receive a 5% raise
 */
+SAVEPOINT s2;
+UPDATE instructor SET salary = CASE
+                WHEN salary <= 100000 THEN salary * 1.05
+                ELSE salary * 1.03
+        END
