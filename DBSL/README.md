@@ -32,3 +32,5 @@ copy and paste the output
 
 - Never put `AS` in `FROM` clause in Oracle SQL
 - `EXCEPT` clause doesn't work, instead use `MINUS` instead
+- use `ROLLBACK TO <savpoint name>` to go to a savepoint  
+  NOTE: savepoints are created for the current session only
