@@ -68,14 +68,13 @@ where semester = 'Fall' and year= 2009 and
 
 -- 14.
 select distinct S.ID, S.name
-from student as S
+from student S
 where not exists (
-        (select course_id
         from course
         where dept_name = 'Biology')
-        except
+        minus
         (select T.course_id
-        from takes as T
+        from takes T
         where S.ID = T.ID)
         );
 
@@ -83,7 +82,18 @@ where not exists (
 select course_id, title form course where course_id in (select course_id from section where year = 2009 group by course_id having count(course_id) < 2);
 
 -- 16.
-select distinct id, name from student natural join takes where 2<=(select count(course_id) from course where dept_name = 'Comp. Sci');
+select distinct S.ID, S.name
+from student S
+where 1 < (
+    select count(*)
+    from takes T
+    where T.ID = S.ID and 
+        T.course_id in (
+            select course_id 
+            from course
+            where dept_name = 'Comp. Sci.'
+        )
+); 
 
 -- 17.
 select dept_name, avg(salary) from instructor group by dept_name having avg(salary) > 42000;
