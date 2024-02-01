@@ -90,3 +90,4 @@ UPDATE instructor SET salary = CASE
                 WHEN salary <= 100000 THEN salary * 1.05
                 ELSE salary * 1.03
         END
+ROLLBACK TO s2;
