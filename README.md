@@ -10,7 +10,7 @@ Contains solves for all labs in sem 4. Updated weekly.
 1. [GCD - consecutive integer method](AL/lab%202/gcd_consecutive_integers.c)
 2. [GCD - middle school method](AL/lab%202/gcd_middle_school_method.c)
 
-## Artificial Intelligence Lab - [manual](AIL/AI%20lab%20manual%20Updated.pdf?raw=true) | [reference](AIL/README.md)
+## Artificial Intelligence Lab - [manual](AIL/AI%20lab%20manual%20Updated.pdf?raw=true) | [reference](AIL/README.md) | [book](AIL/Artificial-Intelligence-A-Modern-Approach-3rd-Edition.pdf?raw=true)
 ### Lab 1
 4. [Binary Search Tree and its Traversals](AIL/lab%201/bst%20and%20traversals.py)
 
