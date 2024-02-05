@@ -26,4 +26,7 @@ class Graph:
     def neighbors(self, node):
         return self.adj[node]
         
-    # def a_star(self, )
+    def a_star(self):
+        frontier = PriorityQueue()
+        
+        
