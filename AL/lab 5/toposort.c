@@ -121,4 +121,16 @@ Enter the Adjacency Matrix:
 0 0 0 0 0 0
 Toposort: 0 1 3 2 4 5 
 Toposort: 0 1 3 2 4 5 
+
+Enter the Number of Vertices: 
+6
+Enter the Adjacency Matrix: 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+0 0 0 1 0 0
+0 1 0 0 0 0
+1 1 0 0 0 0
+1 0 1 0 0 0
+Toposort: 2 3 1 1 0 0 
+Toposort: 5 2 3 4 1 0
 */
