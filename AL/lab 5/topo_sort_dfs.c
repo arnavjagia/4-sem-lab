@@ -31,7 +31,7 @@ int visited[10];
 
 void dfsv(int v, stack *s)
 {
-    printf("Visiting %d\n", v);
+    // printf("Visiting %d\n", v);
     visited[v] = 1;
     int i;
     for(i = 0; i < V; ++i)
@@ -56,6 +56,7 @@ void dfs_sort()
         push(s, i);
     }
 
+    printf("Toposort: ");
     for(i=V-1; i>=0; --i)
         printf("%d ", s->arr[i]);
     printf("\n");
