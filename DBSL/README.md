@@ -1,7 +1,7 @@
 - Python script to setup new SQL file
   ```py
   for i in range (1,17):
-       print("/* "+str(i)+"\n\n*/\n")
+       print("/* "+str(i)+"\n\n*/\n\n")
   ```
 
 - [Create a new user in SQL *Plus](https://library.netapp.com/ecmdocs/ECMP12471543/html/GUID-287BC8BA-B8B6-4D67-804E-880B65D30B68.html)
