@@ -69,25 +69,50 @@ FROM employee;
 /* 11
 For each project, retrieve the project number, the project name, and the number 
 of employees who work on that project.
-*/
 
+   PNUMBER PNAME               NUMEMP
+---------- --------------- ----------
+         1 ProductX                 2
+         2 ProductY                 3
+         3 ProductZ                 2
+        10 Computerization          3
+        20 Reorganization           3
+        30 Newbenefits              3
+*/
+WITH projemp AS
+        (
+         SELECT pno pnumber, COUNT(essn) numemp FROM works_on
+         GROUP BY pno
+        )
+SELECT pnumber, pname, numemp FROM project NATURAL JOIN projemp;
 
 /* 12
+For each project on which more than two employees work, retrieve the project 
+number, the project name, and the number of employees who work on the 
+project.
 
+   PNUMBER PNAME               NUMEMP
+---------- --------------- ----------
+         2 ProductY                 3
+        10 Computerization          3
+        20 Reorganization           3
+        30 Newbenefits              3
 */
-
+WITH projemp AS
+        (
+         SELECT pno pnumber, COUNT(essn) numemp FROM works_on
+         GROUP BY pno
+         HAVING COUNT(essn) > 2
+        )
+SELECT pnumber, pname, numemp FROM project NATURAL JOIN projemp;
 
 /* 13
-
+For each department that has more than five employees, retrieve the department 
+number and the number of its employees who are making more than 40,000.
 */
-
-
-/* 14
-
-*/
-
-
-/* 15
-
-*/
+WITH highpay AS
+        (
+         SELECT ssn, fname FROM employee
+         WHERE 
+SELECT dno, richemp
 
