@@ -42,9 +42,15 @@ SELECT fname, ssn FROM employee
 WHERE ssn NOT IN (SELECT essn FROM dependent);
 
 /* 9
-
+List the names of managers who have at least one dependent
+FNAME           SSN
+--------------- ---------
+Franklin        333445555
+Jennifer        987654321
 */
-
+SELECT fname, ssn FROM department NATURAL JOIN employee
+WHERE ssn = mgr_ssn AND ssn IN
+        (SELECT essn FROM dependent);
 
 /* 10
 
