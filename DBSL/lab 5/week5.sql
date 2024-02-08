@@ -71,7 +71,11 @@ order by D.dname, E.lname, E.fname;
 Retrieve the name of each employee who has a dependent with the same first name 
 and is the same sex as the employee.
 */
-
+select distinct fname || ' ' || minit || ' ' || lname
+from employee E left join dependent D
+    on E.ssn = D.essn
+where E.fname = D.dependent_name and
+    D.sex = E.sex;
 
 /* 8
 Retrieve the names of employees who have no dependents
