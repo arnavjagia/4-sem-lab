@@ -68,7 +68,8 @@ where E.dno = D.dnumber and E.ssn = W.essn and P.dnum = D.dnumber
 order by D.dname, E.lname, E.fname;
 
 /* 7
-
+Retrieve the name of each employee who has a dependent with the same first name 
+and is the same sex as the employee.
 */
 
 
