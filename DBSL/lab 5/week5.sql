@@ -109,10 +109,15 @@ SELECT pnumber, pname, numemp FROM project NATURAL JOIN projemp;
 /* 13
 For each department that has more than five employees, retrieve the department 
 number and the number of its employees who are making more than 40,000.
-*/
-WITH highpay AS
-        (
-         SELECT ssn, fname FROM employee
-         WHERE 
-SELECT dno, richemp
 
+no rows selected
+*/
+WITH bigdept AS
+        (
+         SELECT dno, count(*) FROM employee
+         GROUP BY dno
+         HAVING COUNT(ssn) > 5
+        )
+SELECT dno, COUNT(ssn) FROM employee NATURAL JOIN bigdept
+WHERE salary > 40000
+GROUP BY dno;
