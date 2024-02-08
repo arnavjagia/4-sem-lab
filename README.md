@@ -29,3 +29,7 @@ Contains solves for all labs in sem 4. Updated weekly.
 
 ### Lab 3
 1. [week3 queries](DBSL/Lab%203/week3.sql)
+
+### Lab 5
+1. [Company SQL database](DBSL/lab%205/Company_SQL_updated.sql)
+2. [week 5 queries](DBSL/lab%205/week5.sql)
