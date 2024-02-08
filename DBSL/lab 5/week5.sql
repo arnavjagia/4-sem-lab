@@ -3,32 +3,69 @@
 /* 1
 
 */
+select bdate, address
+from employee
+where fname || ' ' || minit || ' ' || lname like 'John B Smith';
+
+select E.fname || ' ' || E.minit || ' ' || E.lname, E.address
+from employee E inner join department D 
+    on E.dno = D.dnumber
+where D.dname like 'Research';
 
 
 /* 2
 
 */
-
+select P.pnumber, D.dname, E.lname, E.address, E.bdate
+from project P left join department D on P.dnum = D.dnumber
+    left join employee E on D.mgr_ssn = E.ssn
+where plocation like 'Stafford';
 
 /* 3
 
 */
-
+select E1.fname sub_fname, E1.lname sub_lname, E2.fname sup_fname, E2.lname sup_lname
+from employee E1 left join employee E2
+    on E1.super_ssn = E2.ssn;
 
 /* 4
 
 */
-
+select P.pnumber
+from project P 
+where exists (
+    select *
+    from employee E
+    where E.dno = P.dnum and 
+        E.lname like 'Smith'
+);
 
 /* 5
 
 */
-
+with project_x_no(value) as (
+    select pnumber 
+    from project
+    where pname like 'Project X'
+),
+project_x_employees(value) as (
+    select W.essn
+    from works_on W, project_x_no
+    where W.pno = project_x_no.value
+)
+select case
+    when E.ssn in (select * from project_x_employees) then salary * 1.1
+    else salary
+end as salary
+from employee E;
 
 /* 6
 
 */
-
+select fname, minit, lname, dname, pname
+from employee E, department D, works_on W, project P
+where E.dno = D.dnumber and E.ssn = W.essn and P.dnum = D.dnumber
+order by D.dname, E.lname, E.fname;
 
 /* 7
 
