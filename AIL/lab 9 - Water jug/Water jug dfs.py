@@ -65,3 +65,17 @@ if result:
         print(step)
 else:
     print(f'You cannot measure {goal} liters of water using {x}-liter and {y}-liter jugs.')
+
+"""
+You can measure (2, 0) liters of water using 4-liter and 3-liter jugs.
+Path to solution:
+(0, 0)
+(0, 3)
+(3, 0)
+(3, 3)
+(4, 2)
+(4, 3)
+(0, 2)
+(4, 0)
+(2, 0)
+"""
