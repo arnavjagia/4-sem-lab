@@ -24,20 +24,20 @@ class Deque:
 
 def water_jug_bfs(x, y, goal):
     visited = set()
+    path = []
     d = Deque([(0, 0)])
 
     while d.arr:
-        print(d)
-        print(visited)
         a, b = d.dequeue()
 
-        if goal in {a, b, a+b}:
-            return True
+        if goal in path:
+            return True, path
         
         if (a, b) in visited:
             continue
         
         visited.add((a,b))
+        path.append((a,b))
 
         # Fill jug A
         if a < x:
@@ -67,13 +67,17 @@ def water_jug_bfs(x, y, goal):
         else:
             d.enqueue((a + b, 0))
     
-    return False
+    return False, path
 
 
 x, y = 4, 3
-goal = 2
+goal = (2,0)
 
-if water_jug_bfs(x, y, goal):
+result, path = water_jug_bfs(x, y, goal)
+if result:
     print(f'You can measure {goal} liters of water using {x}-liter and {y}-liter jugs.')
+    print('Path to solution:')
+    for step in path:
+        print(step)
 else:
     print(f'You cannot measure {goal} liters of water using {x}-liter and {y}-liter jugs.')
