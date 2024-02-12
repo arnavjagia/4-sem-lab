@@ -90,4 +90,4 @@ if __name__ == "__main__":
     }
 
     g = Graph(Graph_nodes, h_dist)
-    print(g.a_star('S', {'G1', 'G2', 'G3'})) # ['S', 'D', 'E', 'G3']
+    print(g.a_star('S', {'G1', 'G2', 'G3'})) # ['S', 'D', 'C', 'G2']
