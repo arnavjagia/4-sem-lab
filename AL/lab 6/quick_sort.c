@@ -13,12 +13,14 @@ void swap(int *a, int *b) {
 }
 
 int partition(int *a, int l, int r) {
+    // i is the first_high and j is the first_low
     int p = a[l];
-    int i = l, j = r+1;
+    int i = l;
+    int j = r+1;
 
     while (i < j)  {
-        for (; a[i] >= p; ++i);
-        for (; a[j] <= p; --j);
+        while (a[i] < p) ++i;
+        while (a[j] > p) --j;
         swap(&a[i], &a[j]);
     }
 
@@ -29,7 +31,7 @@ int partition(int *a, int l, int r) {
 }
 
 void quick_sort(int *a, int l, int r) {
-    if (l<r) {
+    if (l < r) {
         int s = partition(a, l, r);
         quick_sort(a, l, s-1);
         quick_sort(a, s+1, r);
