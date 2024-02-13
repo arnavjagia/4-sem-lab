@@ -1,0 +1,4 @@
+/*
+Sort given set of integers using Quick sort and analyze its efficiency. Obtain the
+experimental result of order of growth and plot the result.
+*/
