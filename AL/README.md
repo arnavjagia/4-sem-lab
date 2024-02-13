@@ -25,3 +25,5 @@ n = 315
 primeFactors(n)
 # This code is contributed by Harshit Agrawal
 ```
+- [Sedgewick algorithms cheatsheet](https://algs4.cs.princeton.edu/cheatsheet/)
+- [Big O cheatsheet](https://www.bigocheatsheet.com/)
