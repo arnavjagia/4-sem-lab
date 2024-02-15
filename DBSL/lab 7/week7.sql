@@ -22,7 +22,7 @@ DECLARE
         inp_roll student.roll%type;
         gpa_val student.gpa%type;
 BEGIN
-        inp_roll := &g; -- input roll number
+        inp_roll := &roll; -- input roll number
         SELECT gpa INTO gpa_val FROM student WHERE roll = inp_roll;
         DBMS_OUTPUT.PUT_LINE('GPA of student with roll number ' || inp_roll || ' is ' || gpa_val);
 END;
@@ -35,24 +35,26 @@ Write a PL/SQL block to display the letter grade(0-4: F; 4-5: E; 5-6: D; 6-7: C;
 DECLARE
         inp_roll student.roll%type;
         gpa_val student.gpa%type;
+        grade char(2);
 BEGIN
-        inp_roll := &g;
+        inp_roll := &roll;
         SELECT gpa INTO gpa_val FROM student WHERE roll = inp_roll;
         IF gpa_val >= 9 THEN
-                DBMS_OUTPUT.PUT_LINE('A+');
+                grade := 'A+';
         ELSIF gpa_val >= 8 THEN
-                DBMS_OUTPUT.PUT_LINE('A');
+                grade := 'A';
         ELSIF gpa_val >= 7 THEN
-                DBMS_OUTPUT.PUT_LINE('B');
+                grade := 'B';
         ELSIF gpa_val >= 6 THEN
-                DBMS_OUTPUT.PUT_LINE('C');
+                grade := 'C';
         ELSIF gpa_val >= 5 THEN
-                DBMS_OUTPUT.PUT_LINE('D');
+                grade := 'D';
         ELSIF gpa_val >= 4 THEN
-                DBMS_OUTPUT.PUT_LINE('E');
+                grade := 'E';
         ELSE
-                DBMS_OUTPUT.PUT_LINE('F');
+                grade := 'F';
 END IF;
+DBMS_OUTPUT.PUT_LINE(grade);
 END;
 /
 
@@ -67,11 +69,28 @@ Late period         Fine
 After 30 days       Rs. 5.00
 */
 DECLARE
-        inp_date DATE;
+        issue_date DATE; return_date DATE;
+        days NUMBER; fine NUMBER;
 BEGIN
-
+        issue_date := TO_DATE('&issue_date', 'DDMMYYYY');
+        return_date := TO_DATE('&return_date', 'DDMMYYYY');
+        days := return_date - issue_date;
+        fine := 0;
+        IF days > 30 THEN
+                days := days - 30;
+                fine := fine + days * 5;
+        END IF;
+        IF days > 15 THEN
+                days := days - 15;
+                fine := fine + days * 2;
+        END IF;
+        IF days > 7 THEN
+                days := days - 7;
+                fine := fine + days * 1;
+        END IF;
+        DBMS_OUTPUT.PUT_LINE(fine);
 END;
-        
+/
 
 /* 4
 Write a PL/SQL block to print the letter grade of all the students(RollNo: 1 - 5)
