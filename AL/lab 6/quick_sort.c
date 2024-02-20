@@ -19,7 +19,7 @@ int partition(int *a, int l, int r) {
     int j = r;
 
     while (i < j)  {
-        while (a[i] < p && i < r) ++i;
+        while (a[i] < p && i < r) ++i;    // preventing i to go out of bounds
         while (a[j] > p) --j;
         swap(&a[i], &a[j]);
     }
