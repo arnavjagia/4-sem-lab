@@ -99,23 +99,31 @@ END;
 /* 4
 Write a PL/SQL block to print the letter grade of all the students(RollNo: 1 - 5)
 */    
+DECLARE
+    gpa_val student.gpa%type;
+    grade VARCHAR2(2);
 BEGIN
-        SELECT gpa INTO gpa_val FROM student WHERE roll = inp_roll;
+    FOR i IN 1..5 LOOP
+        SELECT gpa INTO gpa_val FROM student WHERE roll = i;
+        
         IF gpa_val >= 9 THEN
-                DBMS_OUTPUT.PUT_LINE('A+');
+            grade := 'A+';
         ELSIF gpa_val >= 8 THEN
-                DBMS_OUTPUT.PUT_LINE('A');
+            grade := 'A';
         ELSIF gpa_val >= 7 THEN
-                DBMS_OUTPUT.PUT_LINE('B');
+            grade := 'B';
         ELSIF gpa_val >= 6 THEN
-                DBMS_OUTPUT.PUT_LINE('C');
+            grade := 'C';
         ELSIF gpa_val >= 5 THEN
-                DBMS_OUTPUT.PUT_LINE('D');
+            grade := 'D';
         ELSIF gpa_val >= 4 THEN
-                DBMS_OUTPUT.PUT_LINE('E');
+            grade := 'E';
         ELSE
-                DBMS_OUTPUT.PUT_LINE('F');
-END IF;
+            grade := 'F';
+        END IF;
+        
+        DBMS_OUTPUT.PUT_LINE('Student ' || i || ': ' || grade);
+    END LOOP;
 END;
 /
 
