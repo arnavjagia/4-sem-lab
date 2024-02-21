@@ -204,7 +204,7 @@ Implement lab exercise 4 using GOTO.
 */
 DECLARE
     gpa_val NUMBER;
-    grade VARCHAR2(3);
+    grade VARCHAR2(2);
 BEGIN
     FOR i IN 1..5 LOOP
         SELECT gpa INTO gpa_val FROM student WHERE roll = i;
@@ -239,5 +239,48 @@ END;
 /
 
 /* 8
-
+Exception Handling:
+Based on the University database schema, write a PL/SQL block to display the 
+details of the Instructor whose name is supplied by the user. Use exceptions to 
+show appropriate error message for the following cases:
+a. Multiple instructors with the same name
+b. No instructor for the given name
 */
+DECLARE
+    v_instructor_name instructor.name%TYPE;
+    v_instructor_id instructor.ID%TYPE;
+    v_instructor_dept instructor.dept_name%TYPE;
+    v_count_instructors INTEGER := 0; -- Initialize the count of instructors found
+BEGIN
+    -- Prompt the user to enter the instructor's name
+    DBMS_OUTPUT.PUT('Enter the name of the Instructor: ');
+    -- Accept the input from the user
+    v_instructor_name := UPPER('&instructor_name');
+    
+    -- Retrieve the ID and department of the instructor
+    SELECT ID, dept_name INTO v_instructor_id, v_instructor_dept 
+    FROM instructor 
+    WHERE UPPER(name) = v_instructor_name;
+    
+    -- Count the number of instructors found
+    SELECT COUNT(*) INTO v_count_instructors 
+    FROM instructor 
+    WHERE UPPER(name) = v_instructor_name;
+    
+    -- Display appropriate message based on the number of instructors found
+    IF v_count_instructors > 1 THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Multiple instructors found with the name ''' || v_instructor_name || '''');
+    ELSIF v_count_instructors = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Error: No instructor found with the name ''' || v_instructor_name || '''');
+    ELSE
+        -- Display the details of the instructor
+        DBMS_OUTPUT.PUT_LINE('Instructor ID: ' || v_instructor_id);
+        DBMS_OUTPUT.PUT_LINE('Department: ' || v_instructor_dept);
+    END IF;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Error: No instructor found with the name ''' || v_instructor_name || '''');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Multiple instructors found with the name ''' || v_instructor_name || '''');
+END;
+/
