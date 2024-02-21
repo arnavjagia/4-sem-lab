@@ -266,17 +266,9 @@ BEGIN
     SELECT COUNT(*) INTO v_count_instructors 
     FROM instructor 
     WHERE UPPER(name) = v_instructor_name;
-    
-    -- Display appropriate message based on the number of instructors found
-    IF v_count_instructors > 1 THEN
-        DBMS_OUTPUT.PUT_LINE('Error: Multiple instructors found with the name ''' || v_instructor_name || '''');
-    ELSIF v_count_instructors = 0 THEN
-        DBMS_OUTPUT.PUT_LINE('Error: No instructor found with the name ''' || v_instructor_name || '''');
-    ELSE
         -- Display the details of the instructor
-        DBMS_OUTPUT.PUT_LINE('Instructor ID: ' || v_instructor_id);
-        DBMS_OUTPUT.PUT_LINE('Department: ' || v_instructor_dept);
-    END IF;
+    DBMS_OUTPUT.PUT_LINE('Instructor ID: ' || v_instructor_id);
+    DBMS_OUTPUT.PUT_LINE('Department: ' || v_instructor_dept);
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('Error: No instructor found with the name ''' || v_instructor_name || '''');
