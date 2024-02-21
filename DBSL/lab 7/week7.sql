@@ -129,7 +129,7 @@ END;
 
 /* 5
 Usage of WHILE:
-5. Alter StudentTable by appending an additional column LetterGrade Varchar2(2). 
+Alter StudentTable by appending an additional column LetterGrade Varchar2(2). 
 Then write a PL/SQL block to update the table with letter grade of each student.
 */
 -- Alter the table to add the LetterGrade column
@@ -173,14 +173,70 @@ END;
 /
 
 /* 6
-
+Usage of FOR:
+Write a PL/SQL block to find the student with max. GPA without using aggregate 
+function
 */
-
+DECLARE
+    max_gpa NUMBER := 0; -- Initialize maximum GPA
+    max_roll NUMBER; -- Initialize roll number of the student with max GPA
+BEGIN
+    -- Iterate through each student's GPA
+    FOR rec IN (SELECT roll, gpa FROM student) LOOP
+        -- Check if the current GPA is greater than the current maximum GPA
+        IF rec.gpa > max_gpa THEN
+            max_gpa := rec.gpa; -- Update maximum GPA
+            max_roll := rec.roll; -- Update roll number of the student with max GPA
+        END IF;
+    END LOOP;
+    
+    -- Display the student with the maximum GPA
+    DBMS_OUTPUT.PUT_LINE('Student with maximum GPA:' || chr(10)
+                      || 'Roll: ' || max_roll || chr(10)
+                      || 'GPA: ' || max_gpa
+    );
+END;
+/
 
 /* 7
-
+Usage of GOTO:
+Implement lab exercise 4 using GOTO.
 */
-
+DECLARE
+    gpa_val NUMBER;
+    grade VARCHAR2(3);
+BEGIN
+    FOR i IN 1..5 LOOP
+        SELECT gpa INTO gpa_val FROM student WHERE roll = i;
+        
+        IF gpa_val >= 9 THEN
+            grade := 'A+';
+            GOTO print_grade;
+        ELSIF gpa_val >= 8 THEN
+            grade := 'A';
+            GOTO print_grade;
+        ELSIF gpa_val >= 7 THEN
+            grade := 'B';
+            GOTO print_grade;
+        ELSIF gpa_val >= 6 THEN
+            grade := 'C';
+            GOTO print_grade;
+        ELSIF gpa_val >= 5 THEN
+            grade := 'D';
+            GOTO print_grade;
+        ELSIF gpa_val >= 4 THEN
+            grade := 'E';
+            GOTO print_grade;
+        ELSE
+            grade := 'F';
+            GOTO print_grade;
+        END IF;
+        
+        <<print_grade>>
+        DBMS_OUTPUT.PUT_LINE('Student ' || i || ': ' || grade);
+    END LOOP;
+END;
+/
 
 /* 8
 
