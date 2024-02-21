@@ -128,9 +128,52 @@ END;
 /
 
 /* 5
-
+Usage of WHILE:
+5. Alter StudentTable by appending an additional column LetterGrade Varchar2(2). 
+Then write a PL/SQL block to update the table with letter grade of each student.
 */
+-- Alter the table to add the LetterGrade column
+ALTER TABLE student ADD (LetterGrade VARCHAR2(2));
 
+-- PL/SQL block to update the table with letter grades
+DECLARE
+    gpa_val NUMBER;
+    grade VARCHAR2(2);
+    roll_num NUMBER := 1; -- Initialize the roll number
+BEGIN
+    -- Loop until all students are processed
+    WHILE roll_num <= 5 LOOP
+        -- Retrieve GPA for the current student
+        SELECT gpa INTO gpa_val FROM student WHERE roll = roll_num;
+        
+        -- Determine the letter grade based on GPA
+        IF gpa_val >= 9 THEN
+            grade := 'A+';
+        ELSIF gpa_val >= 8 THEN
+            grade := 'A';
+        ELSIF gpa_val >= 7 THEN
+            grade := 'B';
+        ELSIF gpa_val >= 6 THEN
+            grade := 'C';
+        ELSIF gpa_val >= 5 THEN
+            grade := 'D';
+        ELSIF gpa_val >= 4 THEN
+            grade := 'E';
+        ELSE
+            grade := 'F';
+        END IF;
+        
+        -- Update the LetterGrade column for the current student
+        UPDATE student SET LetterGrade = grade WHERE roll = roll_num;
+        
+        -- Increment the roll number for the next iteration
+        roll_num := roll_num + 1;
+    END LOOP;
+    
+    -- Display success message
+    DBMS_OUTPUT.PUT_LINE('Letter grades updated successfully.');
+END;
+/
 
 /* 6
 
