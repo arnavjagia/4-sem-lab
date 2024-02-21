@@ -169,9 +169,6 @@ BEGIN
         -- Increment the roll number for the next iteration
         roll_num := roll_num + 1;
     END LOOP;
-    
-    -- Display success message
-    DBMS_OUTPUT.PUT_LINE('Letter grades updated successfully.');
 END;
 /
 
