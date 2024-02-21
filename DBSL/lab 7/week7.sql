@@ -76,22 +76,26 @@ BEGIN
         return_date := TO_DATE('&return_date', 'DDMMYYYY');
         days := return_date - issue_date;
         fine := 0;
+        
         IF days > 30 THEN
-                days := days - 30;
-                fine := fine + days * 5;
+                fine := fine + ((days - 30) * 5); -- Fine for days after 30
+                days := 30; -- Maximum fine applicable
         END IF;
+        
         IF days > 15 THEN
-                days := days - 15;
-                fine := fine + days * 2;
+                fine := fine + ((days - 15) * 2); -- Fine for days between 16 and 30
+                days := 15; -- Maximum fine applicable
         END IF;
+        
         IF days > 7 THEN
-                days := days - 7;
-                fine := fine + days * 1;
+                fine := fine + ((days - 7) * 1); -- Fine for days between 8 and 15
+                days := 7; -- Maximum fine applicable
         END IF;
-        DBMS_OUTPUT.PUT_LINE(fine);
+        
+        DBMS_OUTPUT.PUT_LINE('Fine: Rs. ' || fine);
 END;
 /
-
+        
 /* 4
 Write a PL/SQL block to print the letter grade of all the students(RollNo: 1 - 5)
 */    
