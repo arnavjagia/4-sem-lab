@@ -76,60 +76,203 @@ BEGIN
         return_date := TO_DATE('&return_date', 'DDMMYYYY');
         days := return_date - issue_date;
         fine := 0;
+        
         IF days > 30 THEN
-                days := days - 30;
-                fine := fine + days * 5;
+                fine := fine + ((days - 30) * 5); -- Fine for days after 30
+                days := 30; -- Maximum fine applicable
         END IF;
+        
         IF days > 15 THEN
-                days := days - 15;
-                fine := fine + days * 2;
+                fine := fine + ((days - 15) * 2); -- Fine for days between 16 and 30
+                days := 15; -- Maximum fine applicable
         END IF;
+        
         IF days > 7 THEN
-                days := days - 7;
-                fine := fine + days * 1;
+                fine := fine + ((days - 7) * 1); -- Fine for days between 8 and 15
+                days := 7; -- Maximum fine applicable
         END IF;
-        DBMS_OUTPUT.PUT_LINE(fine);
+        
+        DBMS_OUTPUT.PUT_LINE('Fine: Rs. ' || fine);
 END;
 /
-
+        
 /* 4
 Write a PL/SQL block to print the letter grade of all the students(RollNo: 1 - 5)
 */    
+DECLARE
+    gpa_val student.gpa%type;
+    grade VARCHAR2(2);
 BEGIN
-        SELECT gpa INTO gpa_val FROM student WHERE roll = inp_roll;
+    FOR i IN 1..5 LOOP
+        SELECT gpa INTO gpa_val FROM student WHERE roll = i;
+        
         IF gpa_val >= 9 THEN
-                DBMS_OUTPUT.PUT_LINE('A+');
+            grade := 'A+';
         ELSIF gpa_val >= 8 THEN
-                DBMS_OUTPUT.PUT_LINE('A');
+            grade := 'A';
         ELSIF gpa_val >= 7 THEN
-                DBMS_OUTPUT.PUT_LINE('B');
+            grade := 'B';
         ELSIF gpa_val >= 6 THEN
-                DBMS_OUTPUT.PUT_LINE('C');
+            grade := 'C';
         ELSIF gpa_val >= 5 THEN
-                DBMS_OUTPUT.PUT_LINE('D');
+            grade := 'D';
         ELSIF gpa_val >= 4 THEN
-                DBMS_OUTPUT.PUT_LINE('E');
+            grade := 'E';
         ELSE
-                DBMS_OUTPUT.PUT_LINE('F');
-END IF;
+            grade := 'F';
+        END IF;
+        
+        DBMS_OUTPUT.PUT_LINE('Student ' || i || ': ' || grade);
+    END LOOP;
 END;
 /
 
 /* 5
-
+Usage of WHILE:
+Alter StudentTable by appending an additional column LetterGrade Varchar2(2). 
+Then write a PL/SQL block to update the table with letter grade of each student.
 */
+-- Alter the table to add the LetterGrade column
+ALTER TABLE student ADD (LetterGrade VARCHAR2(2));
 
+-- PL/SQL block to update the table with letter grades
+DECLARE
+    gpa_val NUMBER;
+    grade VARCHAR2(2);
+    roll_num NUMBER := 1; -- Initialize the roll number
+BEGIN
+    -- Loop until all students are processed
+    WHILE roll_num <= 5 LOOP
+        -- Retrieve GPA for the current student
+        SELECT gpa INTO gpa_val FROM student WHERE roll = roll_num;
+        
+        -- Determine the letter grade based on GPA
+        IF gpa_val >= 9 THEN
+            grade := 'A+';
+        ELSIF gpa_val >= 8 THEN
+            grade := 'A';
+        ELSIF gpa_val >= 7 THEN
+            grade := 'B';
+        ELSIF gpa_val >= 6 THEN
+            grade := 'C';
+        ELSIF gpa_val >= 5 THEN
+            grade := 'D';
+        ELSIF gpa_val >= 4 THEN
+            grade := 'E';
+        ELSE
+            grade := 'F';
+        END IF;
+        
+        -- Update the LetterGrade column for the current student
+        UPDATE student SET LetterGrade = grade WHERE roll = roll_num;
+        
+        -- Increment the roll number for the next iteration
+        roll_num := roll_num + 1;
+    END LOOP;
+END;
+/
 
 /* 6
-
+Usage of FOR:
+Write a PL/SQL block to find the student with max. GPA without using aggregate 
+function
 */
-
+DECLARE
+    max_gpa NUMBER := 0; -- Initialize maximum GPA
+    max_roll NUMBER; -- Initialize roll number of the student with max GPA
+BEGIN
+    -- Iterate through each student's GPA
+    FOR rec IN (SELECT roll, gpa FROM student) LOOP
+        -- Check if the current GPA is greater than the current maximum GPA
+        IF rec.gpa > max_gpa THEN
+            max_gpa := rec.gpa; -- Update maximum GPA
+            max_roll := rec.roll; -- Update roll number of the student with max GPA
+        END IF;
+    END LOOP;
+    
+    -- Display the student with the maximum GPA
+    DBMS_OUTPUT.PUT_LINE('Student with maximum GPA:' || chr(10)
+                      || 'Roll: ' || max_roll || chr(10)
+                      || 'GPA: ' || max_gpa
+    );
+END;
+/
 
 /* 7
-
+Usage of GOTO:
+Implement lab exercise 4 using GOTO.
 */
-
+DECLARE
+    gpa_val NUMBER;
+    grade VARCHAR2(2);
+BEGIN
+    FOR i IN 1..5 LOOP
+        SELECT gpa INTO gpa_val FROM student WHERE roll = i;
+        
+        IF gpa_val >= 9 THEN
+            grade := 'A+';
+            GOTO print_grade;
+        ELSIF gpa_val >= 8 THEN
+            grade := 'A';
+            GOTO print_grade;
+        ELSIF gpa_val >= 7 THEN
+            grade := 'B';
+            GOTO print_grade;
+        ELSIF gpa_val >= 6 THEN
+            grade := 'C';
+            GOTO print_grade;
+        ELSIF gpa_val >= 5 THEN
+            grade := 'D';
+            GOTO print_grade;
+        ELSIF gpa_val >= 4 THEN
+            grade := 'E';
+            GOTO print_grade;
+        ELSE
+            grade := 'F';
+            GOTO print_grade;
+        END IF;
+        
+        <<print_grade>>
+        DBMS_OUTPUT.PUT_LINE('Student ' || i || ': ' || grade);
+    END LOOP;
+END;
+/
 
 /* 8
-
+Exception Handling:
+Based on the University database schema, write a PL/SQL block to display the 
+details of the Instructor whose name is supplied by the user. Use exceptions to 
+show appropriate error message for the following cases:
+a. Multiple instructors with the same name
+b. No instructor for the given name
 */
+DECLARE
+    v_instructor_name instructor.name%TYPE;
+    v_instructor_id instructor.ID%TYPE;
+    v_instructor_dept instructor.dept_name%TYPE;
+    v_count_instructors INTEGER := 0; -- Initialize the count of instructors found
+BEGIN
+    -- Prompt the user to enter the instructor's name
+    DBMS_OUTPUT.PUT('Enter the name of the Instructor: ');
+    -- Accept the input from the user
+    v_instructor_name := UPPER('&instructor_name');
+    
+    -- Retrieve the ID and department of the instructor
+    SELECT ID, dept_name INTO v_instructor_id, v_instructor_dept 
+    FROM instructor 
+    WHERE UPPER(name) = v_instructor_name;
+    
+    -- Count the number of instructors found
+    SELECT COUNT(*) INTO v_count_instructors 
+    FROM instructor 
+    WHERE UPPER(name) = v_instructor_name;
+        -- Display the details of the instructor
+    DBMS_OUTPUT.PUT_LINE('Instructor ID: ' || v_instructor_id);
+    DBMS_OUTPUT.PUT_LINE('Department: ' || v_instructor_dept);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Error: No instructor found with the name ''' || v_instructor_name || '''');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Multiple instructors found with the name ''' || v_instructor_name || '''');
+END;
+/
