@@ -18,8 +18,8 @@ int partition(int *a, int l, int r) {
     int i = l+1;
     int j = r;
 
-    while (i < j)  {
-        while (a[i] < p && i < r) ++i;    // preventing i to go out of bounds
+    while (i <= j)  {
+        while (a[i] <= p && i <= r) ++i;    // preventing i to go out of bounds
         while (a[j] > p) --j;
         swap(&a[i], &a[j]);
     }
@@ -44,7 +44,14 @@ void display(int *a, int length) {
     printf("\n");
 }
 int main() {
-    int arr[] = {2, 18, 23, 9, 6};
+    // int arr[] = {2, 18, 23, 9, 6};
+    int arr[] = {5, 3, 1, 9, 8, 2, 4, 7};
+    // int arr[] = {5, 5, 5, 5, 5};
+    // int arr[] = {1, 2, 3, 4, 5};
+    // int arr[] = {5, 4, 3, 2, 1};
+    // int arr[] = {3, 1, 4, 2, 3};
+    // int arr[] = {5, 2};
+
     int n = sizeof(arr)/ sizeof(arr[0]);
 
     display(arr, n);
