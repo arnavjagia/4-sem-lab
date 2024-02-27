@@ -64,9 +64,9 @@ void mergesort(int *arr, int n)
         count++;
     }
 }
-void main()
+int main()
 {
-    int n, i;
+    int n, i; 
     printf("Enter the number of elements: ");
     scanf("%d", &n);
     int * arr = (int *) malloc(n * sizeof(int));
@@ -79,4 +79,17 @@ void main()
     for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\nOperations count: %d\n",count);
+
+    return 0;
 }
+
+/*
+Enter the number of elements: 5
+Enter arr[0]: 2
+Enter arr[1]: 18
+Enter arr[2]: 23
+Enter arr[3]: 9
+Enter arr[4]: 6
+Sorted array: 2 6 9 18 23 
+Operations count: 16
+*/
