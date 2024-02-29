@@ -1,10 +1,19 @@
 /*
 PROCEDURES, FUNCTIONS & PACKAGES
 */
+SET SERVEROUTPUT ON;
+SET DEFINE ON;
+
 /* 1
 Write a procedure to display a message “Good Day to You”.
 */
+CREATE OR REPLACE PROCEDURE good_msg IS
+BEGIN
+        DBMS_OUTPUT.PUT_LINE('Good Day to You.');
+END;
+/
 
+EXEC good_msg;
 
 /* 2
 Based on the University Database Schema in Lab 2, write a procedure which takes 
