@@ -15,7 +15,7 @@ void heapify(int h[], int n) {
         v = h[k];
         heapify = 0;
         while (heapify == 0 && 2 * k <= n) {
-            count += 1;
+            ++count;
             j = 2 * k;
             if (j < n)
                 if (h[j] < h[j + 1]) j = j + 1;
