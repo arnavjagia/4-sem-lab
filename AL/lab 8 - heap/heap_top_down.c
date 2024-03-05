@@ -48,7 +48,7 @@ void insert(heap h, int x) {
     int parent = i / 2;
     
     while (parent > 0 && h->array[parent] > h->array[i]) {
-        count++;
+        ++count;
         swap(h->array + parent, h->array + i);
         i = parent;
         parent = i / 2;
