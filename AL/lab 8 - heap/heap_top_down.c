@@ -5,47 +5,56 @@ results for order of growth and plot the result.
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 
-int op = 0;
+int count = 0;
 
-void topDown(int arr[], int currIndex) {
-    int parent = (currIndex - 1)/2;
-    while(parent >= 0) {
-    op++;
-        if(arr[parent]<arr[currIndex]) {
-            int temp = arr[parent];
-            arr[parent] = arr[currIndex];
-            arr[currIndex] = temp;
-            currIndex = parent;
-            parent = (currIndex - 1)/2;
+void heapify(int h[], int n) {
+    int i, k, v, heapify, j;
+    for (i = (n / 2); i >= 1; i--) {
+        k = i;
+        v = h[k];
+        heapify = 0;
+        while (heapify == 0 && 2 * k <= n) {
+            count += 1;
+            j = 2 * k;
+            if (j < n)
+                if (h[j] < h[j + 1]) j = j + 1;
+            if (v >= h[j])
+                heapify = 1;
+            else {
+                h[k] = h[j];
+                k = j;
+            }
         }
-        else
-            return;
+        h[k] = v;
     }
+    return;
 }
 
 int main() {
-    int h[20], n;
-    printf("enter n:\n");
+    int h[20], i, n;
+    printf("\nEnter the number of Elements:");
     scanf("%d", &n);
-    printf("enter elements:\n");
-    for(int i = 0; i<n; i++) {
+    printf("\nEnter the Elements:");
+    for (i = 1; i <= n; i++)
         scanf("%d", &h[i]);
-        topDown(h, i);
-        // for(int k = 0; k<=i; k++)
-        //     printf("%d ", h[k]);
-        // printf("\n");
+    printf("\ndisplay the array: ");
+    for (i = 1; i <= n; i++) {
+        printf("\t%d", h[i]);
     }
-    
-    printf("heapified array:\n");
-    
-    for(int i = 0; i<n; i++)
-        printf("%d ", h[i]);
-    
-    printf("\n");
-    printf("OP = %d\n", op);
-    exit(0);
+    heapify(h, n);
+    printf("\nThe heap created: ");
+    for (i = 1; i <= n; i++) {
+        printf("\t%d", h[i]);
+    }
+    printf("\nopcount: %d", count);
 
     return 0;
 }
+
+/* ---SAMPLE IO---
+Enter heap elements, -1 to stop: 2 3 1 5 4 -1
+Heap: 1 3 2 5 4 
+
+opcount: 1
+*/
