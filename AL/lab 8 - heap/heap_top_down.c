@@ -5,51 +5,68 @@ results for order of growth and plot the result.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 1000
 
 int count = 0;
 
-void heapify(int h[], int n) {
-    int i, k, v, heapify, j;
-    for (i = (n / 2); i >= 1; i--) {
-        k = i;
-        v = h[k];
-        heapify = 0;
-        while (heapify == 0 && 2 * k <= n) {
-            count += 1;
-            j = 2 * k;
-            if (j < n)
-                if (h[j] < h[j + 1]) j = j + 1;
-            if (v >= h[j])
-                heapify = 1;
-            else {
-                h[k] = h[j];
-                k = j;
-            }
-        }
-        h[k] = v;
+typedef struct {
+    int array[MAX_SIZE];
+    int n;
+} *heap;
+
+void display_array(int *a, int n) {
+    // Display `n` elements of the array `a`
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
     }
-    return;
+    printf("\n");
+}
+
+void swap(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+heap new_heap() {
+    heap h = malloc(sizeof(*h));
+    h->n = 0;
+    return h;
+}
+
+void insert(heap h, int x) {
+    if (h->n == MAX_SIZE) {
+        printf("Heap full\n");
+        return;
+    }
+    h->n++;
+    h->array[h->n] = x;
+    
+    int i = h->n;
+    int parent = i / 2;
+    
+    while (parent > 0 && h->array[parent] > h->array[i]) {
+        count++;
+        swap(h->array + parent, h->array + i);
+        i = parent;
+        parent = i / 2;
+    }
 }
 
 int main() {
-    int h[20], i, n;
-    printf("\nEnter the number of Elements:");
-    scanf("%d", &n);
-    printf("\nEnter the Elements:");
-    for (i = 1; i <= n; i++)
-        scanf("%d", &h[i]);
-    printf("\ndisplay the array: ");
-    for (i = 1; i <= n; i++) {
-        printf("\t%d", h[i]);
+    heap h = new_heap();
+    printf("Enter heap elements, -1 to stop: ");
+    while (1) {
+        int x; 
+        scanf("%d", &x);
+        if (x == -1) break;
+        insert(h, x);
     }
-    heapify(h, n);
-    printf("\nThe heap created: ");
-    for (i = 1; i <= n; i++) {
-        printf("\t%d", h[i]);
-    }
+    printf("Heap: ");
+    display_array(h->array + 1, h->n);
     printf("\nopcount: %d", count);
-
-    return 0;
 }
 
 /* ---SAMPLE IO---
