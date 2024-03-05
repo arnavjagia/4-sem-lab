@@ -7,71 +7,53 @@ results for order of growth and plot the result.
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 1000
+int op = 0;
 
-int count = 0;
-
-typedef struct {
-    int array[MAX_SIZE];
-    int n;
-} *heap;
-
-void display_array(int *a, int n) {
-    // Display `n` elements of the array `a`
-    for (int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
-    }
-    printf("\n");
-}
-
-void swap(int *a, int *b) {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
-
-heap new_heap() {
-    heap h = malloc(sizeof(*h));
-    h->n = 0;
-    return h;
-}
-
-void insert(heap h, int x) {
-    if (h->n == MAX_SIZE) {
-        printf("Heap full\n");
-        return;
-    }
-    h->n++;
-    h->array[h->n] = x;
-    
-    int i = h->n;
-    int parent = i / 2;
-    
-    while (parent > 0 && h->array[parent] > h->array[i]) {
-        ++count;
-        swap(h->array + parent, h->array + i);
-        i = parent;
-        parent = i / 2;
+void topDown(int arr[], int currIndex) {
+    int parent = (currIndex - 1)/2;
+    while(parent >= 0) {
+    op++;
+        if(arr[parent]<arr[currIndex]) {
+            int temp = arr[parent];
+            arr[parent] = arr[currIndex];
+            arr[currIndex] = temp;
+            currIndex = parent;
+            parent = (currIndex - 1)/2;
+        }
+        else
+            return;
     }
 }
 
 int main() {
-    heap h = new_heap();
-    printf("Enter heap elements, -1 to stop: ");
-    while (1) {
-        int x; 
-        scanf("%d", &x);
-        if (x == -1) break;
-        insert(h, x);
+    int h[20], n;
+    printf("enter n:\n");
+    scanf("%d", &n);
+    printf("enter elements:\n");
+    for(int i = 0; i<n; i++) {
+        scanf("%d", &h[i]);
+        topDown(h, i);
+        // for(int k = 0; k<=i; k++)
+        //     printf("%d ", h[k]);
+        // printf("\n");
     }
-    printf("Heap: ");
-    display_array(h->array + 1, h->n);
-    printf("\nopcount: %d", count);
+
+    printf("heapified array:\n");
+
+    for(int i = 0; i<n; i++)
+        printf("%d ", h[i]);
+
+    printf("\n");
+    printf("OP = %d\n", op);
+    exit(0);
+
+    return 0;
 }
 
 /* ---SAMPLE IO---
-Enter heap elements, -1 to stop: 2 3 1 5 4 -1
-Heap: 1 3 2 5 4 
-
-opcount: 1
+enter n: 5
+enter elements: 2 3 1 5 4
+heapified array:
+5 4 1 2 3 
+OP = 9
 */
