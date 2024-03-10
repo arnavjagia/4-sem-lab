@@ -38,11 +38,19 @@ Contains solves for all labs in sem 4. Updated weekly.
 2. [UCS problem 2](AIL/lab%205%20-%20UCS/ucs_q2.py)
 3. [UCS problem 3](AIL/lab%205%20-%20UCS/ucs_q3.py)
 
-### Lab 6 - Hill Climbing Search
-### Lab 7 - A* algorithm
-### Lab 8 - Crypt Arithmetic
-### Lab 9 - Water Jug Problem
-### Lab 10 - 8 Queen's Problem
+### Lab 6 - A* algorithm
+1. [A* problem 1](AIL/lab%206%20-%20A%20star/A%20star%20q1.py)
+2. [A* problem 2](AIL/lab%206%20-%20A%20star/A%20star%20q2.py)
+3. 8 puzzle problem
+
+### Lab 7 - Water Jug Problem
+1. [Water jug problem - BFS](AIL/lab%207%20-%20Water%20jug/Water%20jug%20bfs.py)
+2. [Water jug problem - DFS](AIL/lab%207%20-%20Water%20jug/Water%20jug%20dfs.py)
+
+### Lab 8 - Hill Climbing Search
+### Lab 9 - 8 Queen's Problem
+### Lab 10 - Crypt Arithmetic
+1. [Crypt analysis manual code](AIL/lab%2010%20-%20Crypt%20Arithematic/crypt_analysis%20manual.py)
 
 ## Database Lab - [manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf?raw=true) | [reference](DBSL/README.md) | [book](DBSL/Silberschatz_A_databases_6th_ed.pdf?raw=true)
 ### Lab 2
