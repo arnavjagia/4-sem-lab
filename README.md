@@ -23,6 +23,27 @@ Contains solves for all labs in sem 4. Updated weekly.
 3. [Undirected unweighted graph](AIL/lab%202/UndirectedUnweightedGraph.py)
 4. [Undirected weighted graph](AIL/lab%202/UndirectedWeightedGraph.py)
 
+### Lab 3 - Depth First Search
+1. [Topological sort DFS](AIL/lab%203/topological_sort.py)
+2. [Detect Cycles DFS](AIL/lab%203/detect_cycle.py)
+3. [Maze problem](AIL/lab%20/maze.py)
+
+### Lab 4 - Breadth First Search
+1. [Topological sort BFS](AIL/lab%204/topological_sort_bfs.py)
+2. [Detect Cycles BFS](AIL/lab%204/detect_cycle_bfs.py)
+3. [Travelling Salesman Problem (TSP)](AIL/lab%204/travelling_salesman_bfs.py)
+
+### Lab 5 - Uniform Cost Search (UCS)
+1. [UCS problem 1](AIL/lab%205%20-%20UCS/Uniform_cost_search.py)
+2. [UCS problem 2](AIL/lab%205%20-%20UCS/ucs_q2.py)
+3. [UCS problem 3](AIL/lab%205%20-%20UCS/ucs_q3.py)
+
+### Lab 6 - Hill Climbing Search
+### Lab 7 - A* algorithm
+### Lab 8 - Crypt Arithmetic
+### Lab 9 - Water Jug Problem
+### Lab 10 - 8 Queen's Problem
+
 ## Database Lab - [manual](DBSL/CSE%202241-DBS%20Lab%20Manual-Jan%202024.pdf?raw=true) | [reference](DBSL/README.md) | [book](DBSL/Silberschatz_A_databases_6th_ed.pdf?raw=true)
 ### Lab 2
 1. [Queries 1 to 8](DBSL/Lab%202/week2%20till%208.sql)
