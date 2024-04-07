@@ -10,43 +10,28 @@ Write python code for arithmetic problem MIT + MANIPAL = MITMAHE
 # Python3 program for the above approach
 
 
-# Function to check if the
-# assignment of digits to
-# characters is possible
+# Function to check if the assignment of digits to characters is possible
 def isSolvable(words, result):
-    # Stores the value
-    # assigned to alphabets
+    # Stores the value assigned to alphabets
     mp = [-1] * (26)
 
-    # Stores if a number
-    # is assigned to any
-    # character or not
+    # Stores if a number is assigned to any character or not
     used = [0] * (10)
 
-    # Stores the sum of position
-    # value of a character
-    # in every string
+    # Stores the sum of position value of a character in every string
     Hash = [0] * (26)
 
-    # Stores if a character
-    # is at index 0 of any
-    # string
+    # Stores if a character is at index 0 of any string
     CharAtfront = [0] * (26)
 
-    # Stores the string formed
-    # by concatenating every
-    # occurred character only
-    # once
+    # Stores the string formed by concatenating every occurred character only once
     uniq = ""
 
-    # Iterator over the array,
-    # words
+    # Iterator over the array, words
     for word in range(len(words)):
-        # Iterate over the string,
-        # word
+        # Iterate over the string, word
         for i in range(len(words[word])):
-            # Stores the character
-            # at ith position
+            # Stores the character at ith position
             ch = words[word][i]
 
             # Update Hash[ch-'A]
@@ -57,9 +42,7 @@ def isSolvable(words, result):
                 mp[ord(ch) - ord("A")] = 0
                 uniq += str(ch)
 
-            # If i is 0 and word
-            # length is greater
-            # than 1
+            # If i is 0 and word length is greater than 1
             if i == 0 and len(words[word]) > 1:
                 CharAtfront[ord(ch) - ord("A")] = 1
 
@@ -74,8 +57,7 @@ def isSolvable(words, result):
             mp[ord(ch) - ord("A")] = 0
             uniq += str(ch)
 
-        # If i is 0 and length of
-        # result is greater than 1
+        # If i is 0 and length of result is greater than 1
         if i == 0 and len(result) > 1:
             CharAtfront[ord(ch) - ord("A")] = 1
 
@@ -85,20 +67,17 @@ def isSolvable(words, result):
     return True
 
 
-# Auxiliary Recursive function
-# to perform backtracking
+# Auxiliary Recursive function to perform backtracking
 def solve(words, i, S, mp, used, Hash, CharAtfront):
     # If i is word.length
     if i == len(words):
         # Return true if S is 0
         return S == 0
 
-    # Stores the character at
-    # index i
+    # Stores the character at index i
     ch = words[i]
 
-    # Stores the mapped value
-    # of ch
+    # Stores the mapped value of ch
     val = mp[ord(words[i]) - ord("A")]
 
     # If val is not -1
@@ -114,14 +93,12 @@ def solve(words, i, S, mp, used, Hash, CharAtfront):
             CharAtfront,
         )
 
-    # Stores if there is any
-    # possible solution
+    # Stores if there is any possible solution
     x = False
 
     # Iterate over the range
     for l in range(10):
-        # If CharAtfront[ch-'A']
-        # is true and l is 0
+        # If CharAtfront[ch-'A'] is true and l is 0
         if CharAtfront[ord(ch) - ord("A")] == 1 and l == 0:
             continue
 
