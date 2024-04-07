@@ -44,8 +44,8 @@ class ChessBoard:
             for col in range(self.n):
                 if self.config[row] != col:
                     neighbor_config[row] = col
-                    if ChessBoard(neighbor_config).cost() < self.cost():
-                        q.append(ChessBoard(neighbor_config))
+                    if ChessBoard(neighbor_config, self.n).cost() < self.cost():
+                        q.append(ChessBoard(neighbor_config, self.n))
         shuffle(q)
         return q
 
@@ -65,8 +65,8 @@ def bfs_queens(initial_config: ChessBoard):
 
 
 if __name__ == "__main__":
-    c = ChessBoard()
+    c = ChessBoard(n=10)
     while c.cost() >= 7:
-        c = ChessBoard()
+        c = ChessBoard(n=10)
     print(c)
     print(bfs_queens(c))
