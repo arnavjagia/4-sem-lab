@@ -11,12 +11,28 @@ int knapsack(int W, int *wt, int *val, int n)
         {
             if (i == 0 || w == 0)
                 dp[i][w] = 0;
-            // item is available
-            else if (w >= wt[i - 1])
-                dp[i][w] = ((val[i - 1] + dp[i - 1][w - wt[i - 1]]) > dp[i - 1][w]) ? (val[i - 1] + dp[i - 1][w - wt[i - 1]]) : dp[i - 1][w];
             else
+            {
+                // set previous as current best
                 dp[i][w] = dp[i - 1][w];
+                // if we select that
+                if (w >= wt[i - 1] && (val[i - 1] + dp[i - 1][w - wt[i - 1]]) > dp[i][w])
+                    dp[i][w] = val[i - 1] + dp[i - 1][w - wt[i - 1]];
+            }
         }
+
+    int included[n];
+    int k = 0;
+    int w = W;
+
+    for (int i = n; i > 0; --i) {
+        if (dp[i][w] != dp[i - 1][w]) {
+            included[k++] = i - 1;
+            printf("%d, %d\t", wt[included[k - 1]], val[included[k - 1]]);
+            w -= wt[included[k - 1]];
+        }
+    }
+
     return dp[n][W];
 }
 
